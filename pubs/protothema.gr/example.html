@@ -2,6 +2,11 @@
 <script>
     var googletag = googletag || {};
 	googletag.cmd = googletag.cmd || [];
+
+    googletag.cmd.push(function () {
+        googletag.pubads().disableInitialLoad();
+    });
+
     var adContext = {"RootCategory":"P1","Category":null,"Tag":null,"Article":null,"Page":"Πρώτο Θέμα - ειδήσεις από την Ελλάδα και όλο τον κόσμο - Έκτακτη επικαιρότητα","IsCategory":false};
 
     googletag.cmd.push(function () {
@@ -21,6 +26,7 @@
     });
 
 </script>
+<script async type="text/javascript" src="https://pool-adswag.adhese.com/tag/protothema.gr.js"></script>
 </head>
 
 <body>
@@ -52,6 +58,15 @@
                     .setTargeting(REFRESH_KEY, REFRESH_VALUE)
                     .addService(googletag.pubads());
             }
+
+            agw.requestAds([definedSlot],{
+                debug: true, // turn on console logging
+                renderType: 'direct', // 'direct' for direct rendering, 'gam' to pass bids to GAM
+                timeout: 1000 // timeout in milliseconds
+            },{
+                'someKey1': 'someValue1', //optional custom data passed 
+                'someKey2': 'someValue2'
+            });
 
             if (autoRefresh) {
                 console.log(`refresh of ${code} registered. Will trigger once in viewport `)
